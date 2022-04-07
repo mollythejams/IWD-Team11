@@ -1,0 +1,10 @@
+django
+pycryptodome
+nltk
+contractions
+spacy
+pandas
+tensorflow
+keras
+numpy
+fsspec
