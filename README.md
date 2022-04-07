@@ -19,4 +19,4 @@ Activate the virtual environment you have created using command "[virtual enviro
 After activated, install the neccesary packages and modules in requirement.txt from GitHub repository using command "pip install [package or module name]".
 After installed, go to the directory where the file manage.py of the project stored.
 Run the server using command "python manage.py runserver".
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:8000](http://localhost:8000) to view it in the browser.
