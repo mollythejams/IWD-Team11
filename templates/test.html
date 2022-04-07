@@ -1,0 +1,121 @@
+{% load static %}
+<head>
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+    crossorigin="anonymous"
+  />
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"
+  ></script>
+  <!--Stylesheet-->
+  <link rel="stylesheet" href="{% static 'style.css' %}" />
+</head>
+
+<!-- Chat Position Div-->
+<div class="chat-pos position-fixed bottom-0 end-0">
+  <!-- Chat Window -->
+  <div class="collapse" id="collapseChat">
+    <div class="row">
+      <div class="col-lg-8 col-lg-6 col-lg-4">
+        <div
+          class="card chat-card mt-5 align-items-center"
+          style="max-height: 420px"
+        >
+          <div class="row adiv align-middle">
+            <div class="col-lg-2 align-middle">
+              <img
+                src="{% static 'icons/user.png' %}"
+                alt="Profile"
+                class="chat-user-img p-1 align-middle"
+              />
+            </div>
+            <div class="col my-auto">
+              <span class="px-2 py-8 align-bottom">Live chat</span>
+            </div>
+          </div>
+
+          <!-- Start of the chat messages -->
+          <div
+            class="overflow-auto div-test"
+            style="max-height: 250px; max-width: 450px; height: 250px"
+          >
+            <div class="d-flex flex-row p-3">
+              <img
+                src="https://img.icons8.com/color/48/000000/circled-user-female-skin-type-7.png"
+                width="30"
+                height="30"
+              />
+              <div class="chat ml-2 p-3">Hi! What can I help you with?</div>
+            </div>
+            {% if msg != "" %}
+            <div class="d-flex flex-row p-3">
+              <div class="bg-danger chat mr-2 p-3">
+                <div class="text-white" id="user-message">{{msg}}</div>
+              </div>
+              <img
+                src="https://img.icons8.com/color/48/000000/circled-user-male-skin-type-7.png"
+                width="30"
+                height="30"
+              />
+            </div>
+            {%endif%} {% if res != "" %}
+            <div class="d-flex flex-row p-3">
+              <img
+                src="https://img.icons8.com/color/48/000000/circled-user-female-skin-type-7.png"
+                width="30"
+                height="30"
+              />
+              <div class="chat ml-2 p-3" id="bot-response">{{res}}</div>
+            </div>
+            {%endif%}
+          </div>
+          <!-- Start of chat box tf -->
+          <div class="chat-tf">
+            <div class="form-group px-3">
+              <form method="post" action="" id="send-msg">
+                {% csrf_token %}
+                <div class="row">
+                  <textarea
+                    class="form-control chat-box col"
+                    name="message"
+                    rows="7"
+                    placeholder="Type your message"
+                  ></textarea>
+                  <input
+                    type="submit"
+                    value="Send"
+                    class="text-center btn btn-sm col-3 send-btn"
+                  />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <div class="row align-items-right">
+    <button
+      class="btn chat-btn"
+      style="max-width: fit-content"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#collapseChat"
+      aria-expanded="false"
+      aria-controls="#collapseChat"
+    >
+      <img
+        src="{% static 'icons/chat-white (2).png' %}"
+        alt="chat icon"
+        class="chat-icon"
+      />
+      Chat
+    </button>
+  </div>
+</div>

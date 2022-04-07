@@ -1,0 +1,300 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MD Wow</title>
+
+    <!-- Bootstrap CSS -->
+    <link 
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" 
+    crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!--Stylesheet-->
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+  </head>
+  <body>
+    <!--Navigation Bar-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="landing">MD Wow</a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="landing">Home</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="landing#find">Find a Doctor</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="reviews">Reviews</a>
+            </li>
+          </ul>
+        </div>
+        <a class="btn btn-sm btn-outline-secondary" href="signin" role="button">
+          Log In
+        </a>
+        <a class="btn btn-sm btn-outline-secondary" href="signup" role="button">
+          Sign Up
+        </a>
+      </div>
+    </nav>
+
+    <!--Landing Page-->
+    <header style='background-image: url("{% static 'images/index.jpg' %}")'>
+      <!-- This div is  intentionally blank. It creates the transparent black overlay over the video which you can modify in the CSS -->
+      <div class="overlay"></div>
+
+      <!-- The header content -->
+      <div class="container h-100">
+        <div class="d-flex h-100 text-left align-items-center">
+          <div class="w-100 text-white">
+            <h1 class="display-4 w-50">
+              <i>Find the best doctors for your medical needs.</i>
+            </h1>
+            <p class="lead mb-0 w-50">
+              Choose a specialty below to find local providers, research their
+              background, read patient reviews and schedule an appointment.
+            </p>
+            <br /><br />
+            <!--Button Cards-->
+            <div class="container w-50">
+              <div class="row row-cols-md row-cols-md opacity-10">
+                <div class="col">
+                  <a href="#find">
+                  <div
+                    class="card text-white bg-dark opacity-10 text-center align-items-center"
+                    style= "width: 10rem"
+                  >
+                    <div class="card-body">
+                      <img
+                        src="{% static 'icons/doctor-white.png' %}"
+                        alt="doctor icon"
+                        width="50"
+                        height="50"
+                      />
+                    </a>
+                      <p class="card-text">Doctors</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col">
+                  <a href="reviews">
+                  <div
+                    class="card text-white bg-dark text-center align-items-center"
+                    style="width: 10rem"
+                  >
+                    <div class="card-body">
+                      <img
+                        src="{% static 'icons/review-white.png' %}"
+                        alt="review icon"
+                        width="49"
+                        height="49"
+                      />
+                      </a>
+                      <p class="card-text">Reviews</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Search Section -->
+    <a name="find"></a>
+    <section class="my-5">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h3><b>Find a Doctor</b></h3>
+          </div>
+        </div>
+        <br />
+        <form method="GET" action="landing#find">
+        <div class="row">
+          <div class="col">
+            <div class="form-outline">
+              <input
+                type="Search"
+                id="findLocation"
+                name="find_location"
+                class="form-control form-control-lg"
+                placeholder="Find by Location"
+              />
+              <br />
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <select class="form-control-lg" id="selectSpecialty" type="Search" name="find_specialty">
+              <option>Find by Speciality</option>
+              {% for filter_specialty in filter_specialty%}
+              <option>{{filter_specialty}}</option>
+              {%endfor%}
+            </select>
+          </div>
+
+          <div class="col">
+            <select class="form-control-lg" id="selectLanguage" type="Search" name="find_languages">
+              <option>Find by Language</option>
+              {% for filter_languages in filter_languages%}
+              <option>{{filter_languages}}</option>
+              {%endfor%}
+            </select>
+          </div>
+          <div class="col">
+            <input
+              type="Search"
+              name="find_name"
+              id="find_name"
+              class="form-control form-control-lg"
+              placeholder="Find by Name"
+            />
+          </div>
+          <div class="col">
+            <button type="submit" class="btn btn-danger btn-lg">Search</button>
+          </div>
+        </form>
+        </div>
+      </div>
+      <!--Container End-->
+    </section>
+
+    <section class="my-5">
+      <div class="container align-items-center text-center">
+        <h5>Results</h5>
+
+        <!--Dr Cards-->
+        <form method="GET" action="booking">
+        <div class="container">
+          <div class="overflow-auto">
+          <div class="row row-cols-1 row-cols-md-2 g-4">
+            {% if filter_list %}
+            {% for doctor_name, doctor_specialty, doctor_languages, doctor_qualifications, doctor_location in filter_list%}
+            <div class="col-3">
+              <div class="card">
+                <img src="{% static 'images/doctor1.jpg' %}" class="card-img-top" alt="doctor"/>
+                <div class="card-body">
+                  <p class="card-text" style="height:40px"><b>Doctor Name:</b> {{doctor_name}} </p>
+                  <p class="card-text" style="height:60px"><b>Specialty:</b> {{doctor_specialty}} </p>
+                  <p class="card-text" style="height:80px"><b>Languages:</b> {{doctor_languages}} </p>
+                  <p class="card-text" style="height:100px"><b>Qualifications:</b> {{doctor_qualifications}} </p>
+                  <p class="card-text" style="height:40px"><b>Location:</b> {{doctor_location}} </p>
+                </div>
+              </div>
+              <button type="submit" class="m-3 btn btn-danger btn-lg">Detail & Schedule</button>
+            </div>
+            {% endfor%}
+            {%else%}
+            {% for doctor_name, doctor_specialty, doctor_languages, doctor_qualifications, doctor_location in doctor_list%}
+            <div class="col-3">
+              <div class="card">
+                <img src="{% static 'images/doctor1.jpg' %}" class="card-img-top" alt="doctor"/>
+                <div class="card-body">
+                  <p class="card-text" style="height:40px"><b>Doctor Name:</b> {{doctor_name}} </p>
+                  <p class="card-text" style="height:60px"><b>Specialty:</b> {{doctor_specialty}} </p>
+                  <p class="card-text" style="height:80px"><b>Languages:</b> {{doctor_languages}} </p>
+                  <p class="card-text" style="height:100px"><b>Qualifications:</b> {{doctor_qualifications}} </p>
+                  <p class="card-text" style="height:40px"><b>Location:</b> {{doctor_location}} </p>
+                  <input type="hidden" name="doctor_name" value="{{doctor_name}}"></input>
+                  <input type="hidden" name="doctor_specialty" value="{{doctor_specialty}}"></input>
+                  <input type="hidden" name="doctor_languages" value="{{doctor_languages}}"></input>
+                  <input type="hidden" name="doctor_qualifications" value="{{doctor_qualifications}}"></input>
+                  <input type="hidden" name="doctor_location" value="{{doctor_location}}"></input>
+                </div>
+              </div>
+              <button type="submit" class="m-3 btn btn-danger btn-lg">Detail & Schedule</button>
+            </div>
+            {% endfor%}
+            {%endif%}
+            <!-- Col -->
+          </div> 
+          <!-- End of row -->
+          
+        </div>
+        </div> 
+      </form>
+      </div>
+      <!-- Container End -->
+    </section>
+
+   <!-- Footer -->
+   <footer>
+     <div class="container h-100">
+       <div class="h-100 text-left align-items-left">
+
+         <div class="row">
+           <div class="col-7">
+             <h6> <b>MD Wow</b> </h6>
+             <p class="footer-text">
+               MD Wow is a digital healthcare platform to access clinics, pharmacies, hospitals and health laboratories online. 
+               It provides online doctor and specialist consultation via chat, e-pharmacy, health screening, vaccinations, health tests, health forum and health content.
+              <br>
+              </p>
+           </div>
+           <!-- Col -->
+           <div class="col-4 footer-col">
+            <h6 class="footer-text"> <b>CONTACT</b> </h6>
+            <br>
+            <p class="footer-text">
+              <b>For help with your order:</b>
+              <br>+603 8408 2000
+              <br>
+              <br>
+              <b>For general enquiries: </b>
+              <br>contact@DoctorOnCall.com.my
+              <br>
+              <br>
+              <b>For corporate partnerships: </b>
+              <br>partnerships@DoctorOnCall.com.my
+              <br>
+              <br>
+             </p>
+          </div>
+          <!-- Col -->
+         </div>
+
+         <div class="row">
+           <div class="col-6">
+             <p class="footer-text">Copyright 2022 heheh</p>
+           </div>
+
+           <div class="col-6 text-right">
+            <!-- <p class="footer-text text-right">All rights reserved.</p> -->
+          </div>
+         </div>
+
+       </div>
+     </div>
+   </footer>
+
+   <!-- Chat? -->
+   {%include 'test.html'%} 
+
+  </body>
+</html>
