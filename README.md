@@ -31,7 +31,7 @@ For the back-end, this project is created with [Django](https://www.djangoprojec
 
 6. If you encounter "ModuleNotFoundError: No module named 'Crypto'" this error, then file explorer and find the module folder called "crypto" in your virtual environment.
 
-7. Then you need to rename the "crypto" folder and change the c to capital C "Crypto".
+7. Then you need to rename the "crypto" folder by changing the c in "crypto" to capital C, "Crypto".
 
 8. After installed, go to the directory where the file manage.py of the project stored.
 
