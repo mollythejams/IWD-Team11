@@ -28,8 +28,13 @@ For the back-end, this project is created with [Django](https://www.djangoprojec
 4. Activate the virtual environment you have created using command "[virtual environment name]/Scripts/activate".
 
 5. After activated, install the neccesary packages and modules in requirement.txt from GitHub repository using command "pip install [package or module name]".
-After installed, go to the directory where the file manage.py of the project stored.
 
-6. Run the server using command "python manage.py runserver".
+6. If you encounter "ModuleNotFoundError: No module named 'Crypto'" this error, then file explorer and find the module folder called "crypto" in your virtual environment.
 
-7. Open [http://localhost:8000](http://localhost:8000) to view it in the browser.
+7. Then you need to rename the "crypto" folder and change the c to capital C "Crypto".
+
+8. After installed, go to the directory where the file manage.py of the project stored.
+
+9. Run the server using command "python manage.py runserver".
+
+10. Open [http://localhost:8000](http://localhost:8000) to view it in the browser.
