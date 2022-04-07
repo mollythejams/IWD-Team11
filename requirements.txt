@@ -1,5 +1,6 @@
 django
 pycryptodome
+pyrebase4
 nltk
 contractions
 spacy
